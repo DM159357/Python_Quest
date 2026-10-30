@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python Quest — Learn by Playing</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.27.7/full/pyodide.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-icon">🐍</span><div><strong>Python Quest</strong><small>LEARN · CODE · LEVEL UP</small></div></div>
+      <div class="player-mini"><div class="avatar">DK</div><div><b id="side-name">D.K. Munna</b><small>Rookie Coder</small></div><span class="online-dot"></span></div>
+      <nav class="nav">
+        <button class="nav-btn active" data-view="map">🧭 <span>Adventure Map</span></button>
+        <button class="nav-btn" data-view="dashboard">🏠 <span>Dashboard</span></button>
+        <button class="nav-btn" data-view="world">🗺️ <span>Python World</span></button>
+        <button class="nav-btn" data-view="webdev-course">🌐 <span>Web Dev Academy</span></button>
+        <button class="nav-btn" data-view="arena">💻 <span>Coding Arena</span></button>
+        <button class="nav-btn" data-view="practice">🧩 <span>Mini Games</span></button>
+        <button class="nav-btn" data-view="achievements">🏆 <span>Achievements</span></button>
+        <button class="nav-btn" data-view="profile">👤 <span>My Profile</span></button>
+        <button class="nav-btn" data-view="certificates">🎓 <span>Certificates</span></button>
+      </nav>
+      <div class="sidebar-bottom"><div class="daily-chip">🔥 <b id="streak-side">1 day</b><small>Keep your streak alive</small></div><small class="muted">Your adventure starts here.</small></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar"><div><div class="eyebrow">YOUR CODING ADVENTURE</div><h1 id="page-title">Welcome back, Coder! 👋</h1><p>Every challenge makes you a stronger programmer.</p></div><div class="top-stats"><div><span>⚡</span><b id="top-xp">0 XP</b></div><div><span>🎖️</span><b id="top-level">Level 1</b></div></div></header>
+
+    <main>
+    <section id="dashboard">
+        <!-- Existing Dashboard -->
+    </section>
+
+    <section id="adventure-map">
+        <!-- Existing Adventure Map -->
+    </section>
+
+    <!-- CHAPTER TOPIC MAP -->
+<section class="view" id="chapter-map-view">
+
+    <div class="chapter-header">
+
+        <button id="back-to-main-map">
+            ← Main Adventure Map
+        </button>
+
+        <p id="chapter-level">
+            LEVEL 1
+        </p>
+
+        <h1 id="chapter-title">
+            Chapter 1: Python Basics
+        </h1>
+
+        <p id="chapter-description">
+            Complete every topic to unlock the next topic.
+        </p>
+
+    </div>
+
+    <div class="topic-progress">
+        <p id="topic-progress-text">
+            0 / 5 Topics Completed
+        </p>
+
+        <div class="progress-background">
+            <div id="topic-progress-bar"></div>
+        </div>
+    </div>
+
+    <div class="topic-map-container">
+
+        <div class="topic-road"></div>
+
+        <div id="topic-adventure-map"></div>
+
+    </div>
+
+</section>
+
+
+<!-- SEPARATE TOPIC LEARNING PAGE -->
+<section class="view" id="topic-learning-view">
+
+    <div class="learning-header">
+
+        <button id="back-to-topic-map">
+            ← Back to Topic Map
+        </button>
+
+        <p id="learning-breadcrumb">
+            Chapter 1 / Topic 1
+        </p>
+
+    </div>
+
+    <div class="learning-layout">
+
+        <!-- LEFT SIDE: CONCEPT -->
+        <div class="concept-panel">
+
+            <h1 id="learning-topic-title">
+                What is Python?
+            </h1>
+
+            <h2>Concept</h2>
+
+            <div id="learning-concept"></div>
+
+            <h2>Syntax</h2>
+
+            <pre id="learning-syntax"></pre>
+
+            <h2>Example</h2>
+
+            <pre id="learning-example"></pre>
+
+            <h3>Expected Output</h3>
+
+            <pre id="learning-example-output"></pre>
+
+        </div>
+
+
+        <!-- RIGHT SIDE: CODE EDITOR -->
+        <div class="practice-panel">
+
+            <h2>💻 Coding Practice</h2>
+
+            <p id="coding-question"></p>
+
+            <textarea
+                id="python-code-editor"
+                spellcheck="false"
+                placeholder="Write your Python code here..."
+            ></textarea>
+
+            <div class="editor-buttons">
+
+                <button id="run-python-code">
+                    ▶ Run Code
+                </button>
+
+                <button id="reset-python-code">
+                    Reset
+                </button>
+
+            </div>
+
+            <h3>Output</h3>
+
+            <pre id="python-code-output"></pre>
+
+            <div id="coding-feedback"></div>
+
+
+            <!-- OBJECTIVE QUESTION -->
+            <div class="objective-section">
+
+                <h2>Quick Objective</h2>
+
+                <p id="objective-question"></p>
+
+                <div id="objective-options"></div>
+
+                <p id="objective-feedback"></p>
+
+            </div>
+
+
+            <button id="complete-topic-button" disabled>
+                Complete Topic & Unlock Next →
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+    <!-- CHAPTER TOPIC MAP -->
+<section class="view" id="chapter-map-view">
+
+    <div class="chapter-header">
+
+        <button id="back-to-main-map">
+            ← Main Adventure Map
+        </button>
+
+        <p id="chapter-level">
+            LEVEL 1
+        </p>
+
+        <h1 id="chapter-title">
+            Chapter 1: Python Basics
+        </h1>
+
+        <p id="chapter-description">
+            Complete every topic to unlock the next topic.
+        </p>
+
+    </div>
+
+    <div class="topic-progress">
+        <p id="topic-progress-text">
+            0 / 5 Topics Completed
+        </p>
+
+        <div class="progress-background">
+            <div id="topic-progress-bar"></div>
+        </div>
+    </div>
+
+    <div class="topic-map-container">
+
+        <div class="topic-road"></div>
+
+        <div id="topic-adventure-map"></div>
+
+    </div>
+
+</section>
+
+
+<!-- SEPARATE TOPIC LEARNING PAGE -->
+<section class="view" id="topic-learning-view">
+
+    <div class="learning-header">
+
+        <button id="back-to-topic-map">
+            ← Back to Topic Map
+        </button>
+
+        <p id="learning-breadcrumb">
+            Chapter 1 / Topic 1
+        </p>
+
+    </div>
+
+    <div class="learning-layout">
+
+        <!-- LEFT SIDE: CONCEPT -->
+        <div class="concept-panel">
+
+            <h1 id="learning-topic-title">
+                What is Python?
+            </h1>
+
+            <h2>Concept</h2>
+
+            <div id="learning-concept"></div>
+
+            <h2>Syntax</h2>
+
+            <pre id="learning-syntax"></pre>
+
+            <h2>Example</h2>
+
+            <pre id="learning-example"></pre>
+
+            <h3>Expected Output</h3>
+
+            <pre id="learning-example-output"></pre>
+
+        </div>
+
+
+        <!-- RIGHT SIDE: CODE EDITOR -->
+        <div class="practice-panel">
+
+            <h2>💻 Coding Practice</h2>
+
+            <p id="coding-question"></p>
+
+            <textarea
+                id="python-code-editor"
+                spellcheck="false"
+                placeholder="Write your Python code here..."
+            ></textarea>
+
+            <div class="editor-buttons">
+
+                <button id="run-python-code">
+                    ▶ Run Code
+                </button>
+
+                <button id="reset-python-code">
+                    Reset
+                </button>
+
+            </div>
+
+            <h3>Output</h3>
+
+            <pre id="python-code-output"></pre>
+
+            <div id="coding-feedback"></div>
+
+
+            <!-- OBJECTIVE QUESTION -->
+            <div class="objective-section">
+
+                <h2>Quick Objective</h2>
+
+                <p id="objective-question"></p>
+
+                <div id="objective-options"></div>
+
+                <p id="objective-feedback"></p>
+
+            </div>
+
+
+            <button id="complete-topic-button" disabled>
+                Complete Topic & Unlock Next →
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+    </main>
+
+      <section class="view" id="dashboard">
+        <div class="hero">
+          <div class="hero-copy"><span class="pill">LEVEL 1 · FIRST STEPS</span><h2>Master Python.<br><span>One Quest at a Time.</span></h2><p>Learn real Python by solving missions, defeating coding bugs, and earning XP.</p><button class="primary-btn" data-jump="world">▶ Start Your Adventure <span>→</span></button><div class="hero-foot">✨ No experience needed · Learn by doing</div></div>
+          <div class="hero-art"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="python-emoji">🐍</div><div class="floating-code code-a">print("Hello!")</div><div class="floating-code code-b">{ score: +25 }</div><div class="spark spark-a">✦</div><div class="spark spark-b">✧</div></div>
+        </div>
+        <div class="stats-grid">
+          <article class="stat-card"><div class="stat-icon purple">⚡</div><div><small>Total XP</small><strong id="dash-xp">0</strong><em>Keep earning!</em></div></article>
+          <article class="stat-card"><div class="stat-icon gold">🏆</div><div><small>Player Level</small><strong id="dash-level">1</strong><em id="level-title">Rookie Coder</em></div></article>
+          <article class="stat-card"><div class="stat-icon blue">📘</div><div><small>Missions Cleared</small><strong id="dash-completed">0 / 5</strong><em>Level 1 progress</em></div></article>
+          <article class="stat-card"><div class="stat-icon green">🔥</div><div><small>Daily Streak</small><strong id="dash-streak">1 Day</strong><em>Come back tomorrow</em></div></article>
+        </div>
+        <div class="section-heading"><div><span class="eyebrow">YOUR NEXT MOVE</span><h2>Continue the Quest</h2></div><button class="text-btn" data-jump="world">View all missions ↗</button></div>
+        <div class="dashboard-grid">
+          <article class="panel continue-card"><div class="panel-title"><span class="big-icon">🧭</span><div><h3>First Steps</h3><p>Start your journey into Python.</p></div><span class="status-tag">IN PROGRESS</span></div><div class="progress-label"><span>Level progress</span><b id="progress-label">0%</b></div><div class="progress-track"><div id="progress-fill" class="progress-fill"></div></div><button class="primary-btn full" data-jump="world">Continue Learning →</button></article>
+          <article class="panel daily-card"><div class="panel-title"><span class="big-icon">🎯</span><div><h3>Daily Challenge</h3><p>Run your first Python program.</p></div></div><div class="reward-row"><span>🎁 Reward</span><b>+25 XP</b></div><button class="secondary-btn full" data-jump="arena">Enter Coding Arena →</button></article>
+        </div>
+        <div class="section-heading"><div><span class="eyebrow">YOUR PATH</span><h2>Level 1 — First Steps</h2></div></div>
+        <div id="dashboard-mission-strip" class="mission-strip"></div>
+      </section>
+
+
+      <section class="view active" id="map">
+        <div class="view-heading"><div><span class="eyebrow">YOUR JOURNEY</span><h2>Adventure Map 🗺️</h2><p>Explore all 28 Core Python chapters on one winding adventure road. Complete each chapter to unlock the next.</p></div><div class="world-badge">🌿 BEGINNER VALLEY <span>WORLD 01</span></div></div>
+        <div class="map-legend panel"><span>🟢 Available</span><span>🔒 Locked</span><span>🏆 Cleared</span><span>🎓 Certificate milestone</span></div>
+        <div class="adventure-map-panel panel"><div class="map-sky"><span class="map-cloud cloud-a">☁️</span><span class="map-cloud cloud-b">☁️</span><span class="map-mountain">⛰️</span><div class="map-path" aria-hidden="true"></div><div id="adventure-map-nodes" class="adventure-map-nodes"></div></div><div class="map-footer"><div><b id="map-progress-title">0 / 28 chapters cleared</b><p id="map-next-hint">Start at Chapter 1 and follow the path.</p></div><div class="map-footer-actions"><button class="primary-btn" data-jump="certificates">🎓 View Certificates</button><button class="secondary-btn" data-jump="world">Open Starter Missions</button></div></div></div><div id="chapter-preview" class="panel chapter-preview hidden"></div>
+      </section>
+
+      <section class="view" id="world">
+        <div class="view-heading"><div><span class="eyebrow">WORLD MAP</span><h2>Choose Your Mission 🗺️</h2><p>Clear missions in order to unlock the next challenge.</p></div><div class="world-badge">🌌 PYTHON REALM <span>WORLD 01</span></div></div>
+        <div class="world-banner"><div><b>THE BEGINNER VALLEY</b><p>Five missions stand between you and your first Python badge.</p></div><div class="world-progress"><b id="world-count">0/5 cleared</b><div class="progress-track"><div id="world-fill" class="progress-fill"></div></div></div></div>
+        <div id="mission-list" class="mission-list"></div>
+        <div id="mission-detail" class="panel mission-detail hidden"></div>
+      </section>
+
+      <section class="view" id="arena">
+        <div class="view-heading"><div><span class="eyebrow">CODING ARENA</span><h2>Code. Run. Conquer. 💻</h2><p>Write Python and see the output right here.</p></div><div class="runtime-pill"><span class="pulse"></span><span id="runtime-status">Python engine loading…</span></div></div>
+        <div class="arena-grid">
+          <article class="panel editor-panel"><div class="editor-top"><span><i class="window-dot red"></i><i class="window-dot yellow"></i><i class="window-dot green"></i> main.py</span><button id="reset-code" class="tiny-btn">Reset</button></div><textarea id="code-editor" spellcheck="false">print("Hello, Python Quest!")</textarea><div class="editor-actions"><button id="run-code" class="primary-btn">▶ Run Code</button><button id="clear-output" class="secondary-btn">Clear Output</button></div><small class="muted">Tip: Python runs in your browser after the runtime downloads.</small></article>
+          <article class="panel output-panel"><div class="output-header"><h3>🖥️ Terminal</h3><span id="output-status">READY</span></div><pre id="code-output">Your output will appear here…</pre><div class="terminal-hint">╰─ Try changing the message and run again.</div><div id="run-feedback" class="feedback hidden"></div></article>
+        </div>
+        <article class="panel arena-task"><div class="big-icon">🎯</div><div><h3>Mission objective</h3><p>Make your program print exactly <code>Hello, Python Quest!</code> to earn the First Program reward.</p></div><button id="claim-code-reward" class="secondary-btn">Claim Mission XP</button></article>
+      </section>
+
+      <section class="view" id="practice">
+        <div class="view-heading"><div><span class="eyebrow">MINI GAME ARCADE</span><h2>Train Your Coding Brain 🧩</h2><p>Quick games to practice Python concepts.</p></div><div class="arcade-token">⚡ <b id="arcade-xp">0</b> XP</div></div>
+        <div class="game-grid">
+          <article class="game-card"><div class="game-art purple-art">🔮<span>OUTPUT ORACLE</span></div><div class="game-content"><span class="game-tag">MINI GAME 01</span><h3>Predict the Output</h3><p>Read a short Python snippet and choose what it prints.</p><button id="start-quiz" class="primary-btn full">Play Mini Game →</button></div></article>
+          <article class="game-card"><div class="game-art blue-art">🐞<span>BUG HUNTER</span></div><div class="game-content"><span class="game-tag">MINI GAME 02</span><h3>Bug Hunter</h3><p>Find the missing punctuation in a tiny program.</p><button id="start-bug" class="secondary-btn full">Hunt Bugs →</button></div></article>
+          <article class="game-card"><div class="game-art gold-art">🧱<span>CODE BUILDER</span></div><div class="game-content"><span class="game-tag">MINI GAME 03</span><h3>Code Builder</h3><p>Choose the correct code line to complete the mission.</p><button id="start-builder" class="secondary-btn full">Build Code →</button></div></article>
+        </div>
+        <div id="game-panel" class="panel game-panel hidden"></div>
+      </section>
+
+      <section class="view" id="achievements">
+        <div class="view-heading"><div><span class="eyebrow">YOUR TROPHY ROOM</span><h2>Achievements 🏆</h2><p>Earn badges by learning and completing real challenges.</p></div></div>
+        <div id="achievement-list" class="achievement-grid"></div>
+      </section>
+      <section class="view" id="profile">
+        <div class="view-heading"><div><span class="eyebrow">YOUR PLAYER CARD</span><h2>My Profile 👤</h2><p>Personalize your account and track your learning adventure.</p></div></div>
+        <div class="profile-layout">
+          <article class="panel profile-card">
+            <div class="profile-avatar">🧑‍💻</div>
+            <span class="eyebrow">PYTHON QUEST PLAYER</span>
+            <h2 id="profile-display-name">Python Learner</h2>
+            <p class="muted">Your local learning profile</p>
+            <div class="profile-stats">
+              <div><strong id="profile-xp">0</strong><span>Total XP</span></div>
+              <div><strong id="profile-level">1</strong><span>Level</span></div>
+              <div><strong id="profile-completed">0 / 5</strong><span>Missions</span></div>
+            </div>
+          </article>
+          <article class="panel profile-form">
+            <h3>✏️ Edit Profile</h3>
+            <label for="profile-name-input">Player name</label>
+            <input id="profile-name-input" type="text" maxlength="40" placeholder="Enter your name">
+            <button id="save-profile" class="primary-btn">Save Profile</button>
+            <p id="profile-message" class="muted" role="status">Your name is saved on this device.</p>
+            <div class="profile-note">🔒 This demo profile is stored in this browser using local storage. It is not an online account.</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="view" id="certificates">
+        <div class="view-heading"><div><span class="eyebrow">MILESTONES & REWARDS</span><h2>My Certificates 🎓</h2><p>Earn certificates as you complete learning milestones.</p></div></div>
+        <div class="certificate-note panel"><b>ℹ️ Certificate status</b><p>These are certificates generated by Python Quest, not externally accredited qualifications. Python certificates are based on the Python learning progress available in this build. HTML, CSS और JavaScript certificates course level completion पर unlock होते हैं.</p></div>
+        <div id="certificate-list" class="certificate-grid"></div>
+        <div class="certificate-note panel"><b>🌐 Web Dev Academy Certificates</b><p>HTML, CSS और JavaScript के Level Certificates यहाँ दिखेंगे। Level का certificate सभी संबंधित lessons complete करने पर unlock होगा।</p></div>
+        <div id="web-certificate-list"></div>
+        <article class="panel certificate-issuer"><h3>Certificate Issued By</h3><p><strong>Founder: Deepak Kumar Munna</strong></p><p class="muted">Certificates are based on recorded completion progress on this device.</p></article>
+      </section>
+
+
+      <section class="view" id="webdev-course">
+        <div class="view-heading"><div><span class="eyebrow">NEW LEARNING WORLDS</span><h2>Web Dev Academy 🌐</h2><p>HTML + CSS + JavaScript — आसान हिंदी में explanations, examples, debugging और quizzes. आपका Python course unchanged रहेगा.</p></div><div class="world-badge">3 COURSES <span>FOUNDATION → PROJECTS</span></div></div>
+        <div class="web-course-summary" id="web-course-summary"></div>
+        <div class="web-course-tabs" id="web-course-tabs"></div>
+        <div class="web-course-layout"><aside class="web-topic-list" id="web-topic-list"></aside><article class="panel web-lesson-panel" id="web-lesson-panel"><h3>Choose a course to begin</h3><p>Pick HTML, CSS or JavaScript, then open a lesson from the list.</p></article></div>
+      </section>
+      <footer>Python Quest <span>•</span> Learn by Playing <span>•</span> Your progress is saved on this device.</footer>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="script.js"></script>
+  <script src="learning-upgrade.js"></script>
+  <script src="quest-content.js"></script>
+  <script src="quest-content2.js"></script>
+  <script src="quest-tests.js"></script>
+  <script src="quest-content3.js"></script>
+  <script src="quest-content4.js"></script>
+  <script src="quest-content-enrichment.js"></script>
+  <script src="quest-v3.js"></script>
+  <script src="web-course-data.js"></script>
+  <script src="web-course.js"></script>
+</body>
+</html>
